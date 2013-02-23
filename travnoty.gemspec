@@ -4,7 +4,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'travnoty/version'
 
 Gem::Specification.new do |gem|
-  gem.name          = "Travnoty"
+  gem.name          = "travnoty"
   gem.version       = Travnoty::Version
   gem.authors       = ["João Soares"]
   gem.email         = ["jsoaresgeral@gmail.com"]
