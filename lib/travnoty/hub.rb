@@ -1,15 +1,15 @@
 module Travnoty
   class Hub
 
-    attr_reader :code, :host, :name, :language
+    attr_reader :id, :code, :host, :name, :language
 
-    def initialize(code, host, name, language)
-      @code, @host, @name, @language = code, host, name, language
+    def initialize(id, code, host, name, language)
+      @id, @code, @host, @name, @language = id, code, host, name, language
     end
 
     class << self
 
-      ATTRIBUTES = [:code, :host, :name, :language]
+      ATTRIBUTES = [:id, :code, :host, :name, :language]
 
       def attributes
         ATTRIBUTES
