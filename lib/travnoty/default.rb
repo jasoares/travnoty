@@ -1,5 +1,6 @@
 require 'faraday'
 require 'travnoty/response/parse_json'
+require 'travnoty/identity_map'
 
 module Travnoty
   module Default
@@ -25,6 +26,8 @@ module Travnoty
       },
     } unless defined? Travnoty::Default::CONNECTION_OPTIONS
 
+    IDENTITY_MAP = Travnoty::IdentityMap unless defined? Travnoty::Default::IDENTITY_MAP
+
     MIDDLEWARE = Faraday::Builder.new do |builder|
       builder.use Travnoty::Response::ParseJson
       builder.adapter Faraday.default_adapter
@@ -42,6 +45,10 @@ module Travnoty
 
       def connection_options
         CONNECTION_OPTIONS
+      end
+
+      def identity_map
+        IDENTITY_MAP
       end
 
       def middleware

@@ -4,7 +4,7 @@ require 'travnoty/default'
 module Travnoty
   module Configurable
     extend Forwardable
-    attr_accessor :endpoint, :connection_options, :middleware
+    attr_accessor :endpoint, :connection_options, :identity_map, :middleware
     def_delegator :options, :hash
 
     class << self
@@ -13,6 +13,7 @@ module Travnoty
         @keys ||= [
           :endpoint,
           :connection_options,
+          :identity_map,
           :middleware,
         ]
       end

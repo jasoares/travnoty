@@ -9,9 +9,9 @@ module Travnoty
       # @param path [String]
       # @param options [Hash]
       # @return [Object]
-      def object_from_response(klass, method, path, options={})
-        response = send(method.to_sym, path, options)
-        klass.build(response[:body])
+      def object_from_response(klass, request_method, path, options={})
+        response = send(request_method.to_sym, path, options)
+        klass.from_response(response)
       end
 
       # @param klass [Class]
@@ -19,9 +19,9 @@ module Travnoty
       # @param path [String]
       # @param options [Hash]
       # @return [Object]
-      def objects_from_response(klass, method, path, options={})
-        response = send(method.to_sym, path, options)
-        objects_from_array(klass, response[:body])
+      def objects_from_response(klass, request_method, path, options={})
+        response = send(request_method.to_sym, path, options)[:body]
+        objects_from_array(klass, response)
       end
 
       # @param klass [Class]
@@ -29,7 +29,7 @@ module Travnoty
       # @return [Array]
       def objects_from_array(klass, array)
         array.map do |element|
-          klass.build(element)
+          klass.fetch_or_new(element)
         end
       end
 

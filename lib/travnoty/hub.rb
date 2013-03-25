@@ -1,25 +1,16 @@
+require 'travnoty/identity'
+
 module Travnoty
-  class Hub
+  class Hub < Travnoty::Identity
 
-    attr_reader :id, :code, :host, :name, :language
+    attr_reader :id, :code, :host, :language, :main_hub_id, :name,
+      :updated_at, :created_at
 
-    def initialize(id, code, host, name, language)
-      @id, @code, @host, @name, @language = id, code, host, name, language
+    def main_hub
+      @main_hub ||= self.class.fetch(:id => @attrs[:main_hub_id])
     end
 
-    class << self
-
-      ATTRIBUTES = [:id, :code, :host, :name, :language]
-
-      def attributes
-        ATTRIBUTES
-      end
-
-      def build(attrs={})
-        new(*attributes.map { |key| attrs[key] })
-      end
-
-    end
+    alias main_hub? main_hub_id?
 
   end
 end
