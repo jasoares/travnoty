@@ -1,6 +1,8 @@
 require 'faraday'
+require 'faraday-http-cache'
 require 'travnoty/response/parse_json'
 require 'travnoty/identity_map'
+require 'logger'
 
 module Travnoty
   module Default
@@ -26,10 +28,11 @@ module Travnoty
       },
     } unless defined? Travnoty::Default::CONNECTION_OPTIONS
 
-    IDENTITY_MAP = Travnoty::IdentityMap unless defined? Travnoty::Default::IDENTITY_MAP
+    IDENTITY_MAP = false unless defined? Travnoty::Default::IDENTITY_MAP
 
     MIDDLEWARE = Faraday::Builder.new do |builder|
       builder.use Travnoty::Response::ParseJson
+      builder.use :http_cache, :file_store, 'data/cache'
       builder.adapter Faraday.default_adapter
     end unless defined? Travnoty::Default::MIDDLEWARE
 
