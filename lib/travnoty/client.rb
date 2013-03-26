@@ -2,6 +2,7 @@ require 'faraday'
 require 'multi_json'
 require 'travnoty/api/hubs'
 require 'travnoty/configurable'
+require 'travnoty/error/decode_error'
 
 module Travnoty
   class Client
