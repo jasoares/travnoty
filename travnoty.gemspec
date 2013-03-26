@@ -8,9 +8,9 @@ Gem::Specification.new do |gem|
   gem.version       = Travnoty::Version
   gem.authors       = ["João Soares"]
   gem.email         = ["jsoaresgeral@gmail.com"]
-  gem.description   = %q{A ruby interface to the Travnoty API.}
-  gem.summary       = gem.description
-  gem.homepage      = "https://github.com/jasoares/travnoty_client"
+  gem.description   = %q{A ruby interface to the Travnoty API (http://www.travnoty.com).}
+  gem.summary       = %q{Travnoty API ruby library (http://www.travnoty.com).}
+  gem.homepage      = "https://github.com/jasoares/travnoty"
 
   gem.files         = `git ls-files`.split($/)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
