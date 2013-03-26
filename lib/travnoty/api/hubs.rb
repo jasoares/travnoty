@@ -19,6 +19,10 @@ module Travnoty
         objects_from_response(Travnoty::Server, :get, "hubs/#{id}/servers", options)
       end
 
+      def hubs_supported_servers(id, options={})
+        objects_from_response(Travnoty::Server, :get, "hubs/#{id}/supported_servers", options)
+      end
+
     end
   end
 end
